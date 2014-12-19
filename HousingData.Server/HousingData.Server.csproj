@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HousingDataDownloader.cs" />
     <Compile Include="HousingDataPopulator.cs" />
     <Compile Include="HousingRow.cs" />
     <Compile Include="HousingService.cs" />
@@ -50,9 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Data\pp-2014-sorted.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HousingData.Core\HousingData.Core.csproj">

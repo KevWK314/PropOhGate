@@ -9,7 +9,7 @@ namespace HousingData.Server
 {
     public class HousingDataPopulator
     {
-        private const string DataFileName = @"Data\pp-2014-sorted.csv";
+        public const string DataFileName = @"Data\pp-2014.csv";
 
         private readonly HousingRepository _repository;
         private readonly Dictionary<string, HousingRow> _housingRows = new Dictionary<string, HousingRow>();
@@ -21,6 +21,8 @@ namespace HousingData.Server
 
         public Task StartAsync()
         {
+            HousingDataDownloader.DownloadIfNotThere(DataFileName);
+
             if (!File.Exists(DataFileName))
             {
                 throw new FileNotFoundException("No data found");
@@ -35,11 +37,12 @@ namespace HousingData.Server
                             var line = reader.ReadLine();
                             while (!string.IsNullOrEmpty(line))
                             {
+                                line = line.Replace("\"", string.Empty);
                                 var tokens = line.Split(new[] { ',' });
-                                if (tokens.Length == 15)
+                                if (tokens.Length > 2)
                                 {
                                     var postcode = tokens[3].Split(new[] { ' ' })[0];
-                                    var date = DateTime.ParseExact(tokens[2], "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+                                    var date = DateTime.ParseExact(tokens[2], "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
                                     var value = double.Parse(tokens[1]);
 
                                     var row = GetHousingRow(postcode);
