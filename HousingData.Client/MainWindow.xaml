@@ -1,0 +1,24 @@
+﻿<Window x:Class="HousingData.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        DataContext="{StaticResource Locator}"
+        Title="Housing" Height="350" Width="525">
+    <Grid DataContext="{Binding Main}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Button Command="{Binding StartCommand}" Content="Start" />
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Collection}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding PostCode}" Header="Postcode"/>
+                <DataGridTextColumn Binding="{Binding Count}" Header="Count" />
+                <DataGridTextColumn Binding="{Binding TotalValue}" Header="Total Value"/>
+                <DataGridTextColumn Binding="{Binding AveragePrice}" Header="Average Price" />
+                <DataGridTextColumn Binding="{Binding FirstDate}" Header="Earliest"/>
+                <DataGridTextColumn Binding="{Binding LastDate}" Header="Latest"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

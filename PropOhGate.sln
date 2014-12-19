@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropOhGate", "PropOhGate\PropOhGate.csproj", "{BA079AD3-D26C-48FA-812E-0F3146817D0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropOhGate.WebSockets", "PropOhGate.WebSockets\PropOhGate.WebSockets.csproj", "{8BBF47CD-E69A-41DF-9C49-6130238F9AC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{53359880-16A6-4FBD-9B05-21554F290A04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingData.Server", "HousingData.Server\HousingData.Server.csproj", "{AA7FBC8F-A80F-4B6F-B20F-6073D717C3BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingData.Client", "HousingData.Client\HousingData.Client.csproj", "{864C866C-AEB0-461E-89FD-B83E9F51F233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingData.Core", "HousingData.Core\HousingData.Core.csproj", "{4744EC92-FE76-4C9C-B470-FF892E4A8ECF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA079AD3-D26C-48FA-812E-0F3146817D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA079AD3-D26C-48FA-812E-0F3146817D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA079AD3-D26C-48FA-812E-0F3146817D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA079AD3-D26C-48FA-812E-0F3146817D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BBF47CD-E69A-41DF-9C49-6130238F9AC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BBF47CD-E69A-41DF-9C49-6130238F9AC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BBF47CD-E69A-41DF-9C49-6130238F9AC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BBF47CD-E69A-41DF-9C49-6130238F9AC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7FBC8F-A80F-4B6F-B20F-6073D717C3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7FBC8F-A80F-4B6F-B20F-6073D717C3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7FBC8F-A80F-4B6F-B20F-6073D717C3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7FBC8F-A80F-4B6F-B20F-6073D717C3BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864C866C-AEB0-461E-89FD-B83E9F51F233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864C866C-AEB0-461E-89FD-B83E9F51F233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864C866C-AEB0-461E-89FD-B83E9F51F233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864C866C-AEB0-461E-89FD-B83E9F51F233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4744EC92-FE76-4C9C-B470-FF892E4A8ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4744EC92-FE76-4C9C-B470-FF892E4A8ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4744EC92-FE76-4C9C-B470-FF892E4A8ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4744EC92-FE76-4C9C-B470-FF892E4A8ECF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AA7FBC8F-A80F-4B6F-B20F-6073D717C3BF} = {53359880-16A6-4FBD-9B05-21554F290A04}
+		{864C866C-AEB0-461E-89FD-B83E9F51F233} = {53359880-16A6-4FBD-9B05-21554F290A04}
+		{4744EC92-FE76-4C9C-B470-FF892E4A8ECF} = {53359880-16A6-4FBD-9B05-21554F290A04}
+	EndGlobalSection
+EndGlobal
