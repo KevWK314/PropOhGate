@@ -30,7 +30,10 @@ namespace PropOhGate.WebSockets.Receive
         public void Stop()
         {
             _webSocket.Send(MessageType.Unsubscribe.TypeId, 0, MessageType.Unsubscribe.TypeId.Length);
-            _webSocket.Close();
+            if (_webSocket.State != WebSocketState.Closing && _webSocket.State != WebSocketState.Closed)
+            {
+                _webSocket.Close();
+            }
         }
 
         public IDisposable SubscribeToUpdate(Action<byte[]> cellUpdate)

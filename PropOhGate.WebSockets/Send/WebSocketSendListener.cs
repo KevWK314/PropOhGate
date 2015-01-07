@@ -10,7 +10,7 @@ namespace PropOhGate.WebSockets.Send
     public class WebSocketSendListener : SendListener
     {
         private WebSocketServer _server;
-        private Dictionary<Guid, WebSocketSender> _clients = new Dictionary<Guid, WebSocketSender>();
+        private readonly Dictionary<Guid, WebSocketSender> _clients = new Dictionary<Guid, WebSocketSender>();
 
         public WebSocketSendListener(Repository repository)
             : base(repository)
@@ -59,7 +59,7 @@ namespace PropOhGate.WebSockets.Send
                     }
                     else if (data.IsUnsubscribe())
                     {
-                        DoUnsubscribe(sender);
+                        DoUnsubscribe(connection);
                     }
                 }
             }
@@ -69,12 +69,7 @@ namespace PropOhGate.WebSockets.Send
         {
             lock (_clients)
             {
-                WebSocketSender sender;
-                if (_clients.TryGetValue(connection.ConnectionInfo.Id, out sender))
-                {
-                    _clients.Remove(connection.ConnectionInfo.Id);
-                    DoUnsubscribe(sender);
-                }
+                DoUnsubscribe(connection);  
             }
         }
 
@@ -92,11 +87,20 @@ namespace PropOhGate.WebSockets.Send
             }
         }
 
-        private void DoUnsubscribe(WebSocketSender sender)
+        private void DoUnsubscribe(IWebSocketConnection connection)
         {
-            if (sender.Subscription != null)
+            lock (_clients)
             {
-                sender.Subscription.Dispose();
+                WebSocketSender sender;
+                if (_clients.TryGetValue(connection.ConnectionInfo.Id, out sender))
+                {
+                    if (sender.Subscription != null)
+                    {
+                        sender.Subscription.Dispose();
+                    }
+                    _clients.Remove(connection.ConnectionInfo.Id);
+                    connection.Close();
+                }
             }
         }
     }

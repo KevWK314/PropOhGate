@@ -1,3 +1,4 @@
+using System.Linq;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 
@@ -15,13 +16,17 @@ namespace HousingData.Client.ViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                var vm = ServiceLocator.Current.GetInstance<MainViewModel>();
+                return vm;
             }
         }
         
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
+            ServiceLocator.Current
+                .GetAllInstances<MainViewModel>()
+                .ToList()
+                .ForEach(v => v.Cleanup());
         }
     }
 }

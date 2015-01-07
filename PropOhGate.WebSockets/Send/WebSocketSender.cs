@@ -15,10 +15,10 @@ namespace PropOhGate.WebSockets.Send
             Connection = connection;
         }
 
-        public string RepositoryHash 
-        { 
-            get; 
-            private set; 
+        public string RepositoryHash
+        {
+            get;
+            private set;
         }
 
         public IWebSocketConnection Connection
@@ -39,7 +39,10 @@ namespace PropOhGate.WebSockets.Send
             {
                 foreach (var d in data)
                 {
-                    Connection.Send(d);
+                    if (Connection.IsAvailable)
+                    {
+                        Connection.Send(d);
+                    }
                 }
             }
         }
@@ -48,7 +51,10 @@ namespace PropOhGate.WebSockets.Send
         {
             lock (_lockObject)
             {
-                Connection.Send(data);
+                if (Connection.IsAvailable)
+                {
+                    Connection.Send(data);
+                }
             }
         }
     }

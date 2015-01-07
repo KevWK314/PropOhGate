@@ -29,12 +29,9 @@ namespace PropOhGate.Collection
 
         public IEnumerator<T> GetEnumerator()
         {
-            lock (_items)
+            for (int i = 0; i < _items.Count; i++)
             {
-                for (int i = 0; i < _items.Count; i++)
-                {
-                    yield return _items[i];
-                }
+                yield return _items[i];
             }
         }
 
@@ -143,15 +140,15 @@ namespace PropOhGate.Collection
             Task.Run(
                 () => _syncContext.Post(
                 s =>
+                {
+                    lock (_changes)
                     {
-                        lock (_changes)
+                        while (_changes.Count > 0)
                         {
-                            while (_changes.Count > 0)
-                            {
-                                CollectionChanged(this, _changes.Dequeue());
-                            }
+                            CollectionChanged(this, _changes.Dequeue());
                         }
-                    },
+                    }
+                },
                 null));
         }
     }

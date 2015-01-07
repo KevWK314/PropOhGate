@@ -42,7 +42,7 @@ namespace PropOhGate.Converters
 
         public double FromByteArray(byte[] value, int offset)
         {
-            if (value.Length == 0)
+            if (value.Length <= offset)
             {
                 return default(double);
             }
